@@ -15,7 +15,6 @@
 package linebot
 
 import (
-	"encoding/hex"
 	"encoding/json"
 	"time"
 )
@@ -52,17 +51,9 @@ type EventSource struct {
 	RoomID  string          `json:"roomId,omitempty"`
 }
 
-// Params type
-type Params struct {
-	Date     string `json:"date,omitempty"`
-	Time     string `json:"time,omitempty"`
-	Datetime string `json:"datetime,omitempty"`
-}
-
 // Postback type
 type Postback struct {
-	Data   string  `json:"data"`
-	Params *Params `json:"params,omitempty"`
+	Data string `json:"data"`
 }
 
 // BeaconEventType type
@@ -70,16 +61,13 @@ type BeaconEventType string
 
 // BeaconEventType constants
 const (
-	BeaconEventTypeEnter  BeaconEventType = "enter"
-	BeaconEventTypeLeave  BeaconEventType = "leave"
-	BeaconEventTypeBanner BeaconEventType = "banner"
+	BeaconEventTypeEnter BeaconEventType = "enter"
 )
 
 // Beacon type
 type Beacon struct {
-	Hwid          string
-	Type          BeaconEventType
-	DeviceMessage []byte
+	Hwid string          `json:"hwid"`
+	Type BeaconEventType `json:"type"`
 }
 
 // Event type
@@ -100,7 +88,7 @@ type rawEvent struct {
 	Source     *EventSource     `json:"source"`
 	Message    *rawEventMessage `json:"message,omitempty"`
 	*Postback  `json:"postback,omitempty"`
-	Beacon     *rawBeaconEvent `json:"beacon,omitempty"`
+	*Beacon    `json:"beacon,omitempty"`
 }
 
 type rawEventMessage struct {
@@ -116,12 +104,6 @@ type rawEventMessage struct {
 	StickerID string      `json:"stickerId,omitempty"`
 }
 
-type rawBeaconEvent struct {
-	Hwid string          `json:"hwid"`
-	Type BeaconEventType `json:"type"`
-	DM   string          `json:"dm,omitempty"`
-}
-
 const (
 	millisecPerSec     = int64(time.Second / time.Millisecond)
 	nanosecPerMillisec = int64(time.Millisecond / time.Nanosecond)
@@ -135,13 +117,7 @@ func (e *Event) MarshalJSON() ([]byte, error) {
 		Timestamp:  e.Timestamp.Unix()*millisecPerSec + int64(e.Timestamp.Nanosecond())/int64(time.Millisecond),
 		Source:     e.Source,
 		Postback:   e.Postback,
-	}
-	if e.Beacon != nil {
-		raw.Beacon = &rawBeaconEvent{
-			Hwid: e.Beacon.Hwid,
-			Type: e.Beacon.Type,
-			DM:   hex.EncodeToString(e.Beacon.DeviceMessage),
-		}
+		Beacon:     e.Beacon,
 	}
 
 	switch m := e.Message.(type) {
@@ -238,16 +214,7 @@ func (e *Event) UnmarshalJSON(body []byte) (err error) {
 	case EventTypePostback:
 		e.Postback = rawEvent.Postback
 	case EventTypeBeacon:
-		var deviceMessage []byte
-		deviceMessage, err = hex.DecodeString(rawEvent.Beacon.DM)
-		if err != nil {
-			return
-		}
-		e.Beacon = &Beacon{
-			Hwid:          rawEvent.Beacon.Hwid,
-			Type:          rawEvent.Beacon.Type,
-			DeviceMessage: deviceMessage,
-		}
+		e.Beacon = rawEvent.Beacon
 	}
 	return
 }

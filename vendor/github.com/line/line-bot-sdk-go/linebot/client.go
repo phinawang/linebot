@@ -15,38 +15,26 @@
 package linebot
 
 import (
-	"context"
 	"errors"
 	"io"
 	"net/http"
 	"net/url"
 	"path"
+
+	"golang.org/x/net/context"
+	"golang.org/x/net/context/ctxhttp"
 )
 
 // APIEndpoint constants
 const (
 	APIEndpointBase = "https://api.line.me"
 
-	APIEndpointPushMessage           = "/v2/bot/message/push"
-	APIEndpointReplyMessage          = "/v2/bot/message/reply"
-	APIEndpointMulticast             = "/v2/bot/message/multicast"
-	APIEndpointGetMessageContent     = "/v2/bot/message/%s/content"
-	APIEndpointLeaveGroup            = "/v2/bot/group/%s/leave"
-	APIEndpointLeaveRoom             = "/v2/bot/room/%s/leave"
-	APIEndpointGetProfile            = "/v2/bot/profile/%s"
-	APIEndpointGetGroupMemberProfile = "/v2/bot/group/%s/member/%s"
-	APIEndpointGetRoomMemberProfile  = "/v2/bot/room/%s/member/%s"
-	APIEndpointGetGroupMemberIDs     = "/v2/bot/group/%s/members/ids"
-	APIEndpointGetRoomMemberIDs      = "/v2/bot/room/%s/members/ids"
-	APIEndpointCreateRichMenu        = "/v2/bot/richmenu"
-	APIEndpointGetRichMenu           = "/v2/bot/richmenu/%s"
-	APIEndpointListRichMenu          = "/v2/bot/richmenu/list"
-	APIEndpointDeleteRichMenu        = "/v2/bot/richmenu/%s"
-	APIEndpointGetUserRichMenu       = "/v2/bot/user/%s/richmenu"
-	APIEndpointLinkUserRichMenu      = "/v2/bot/user/%s/richmenu/%s"
-	APIEndpointUnlinkUserRichMenu    = "/v2/bot/user/%s/richmenu"
-	APIEndpointDownloadRichMenuImage = "/v2/bot/richmenu/%s/content" // Download: GET / Upload: POST
-	APIEndpointUploadRichMenuImage   = "/v2/bot/richmenu/%s/content" // Download: GET / Upload: POST
+	APIEndpointPushMessage       = "/v2/bot/message/push"
+	APIEndpointReplyMessage      = "/v2/bot/message/reply"
+	APIEndpointGetMessageContent = "/v2/bot/message/%s/content"
+	APIEndpointLeaveGroup        = "/v2/bot/group/%s/leave"
+	APIEndpointLeaveRoom         = "/v2/bot/room/%s/leave"
+	APIEndpointGetProfile        = "/v2/bot/profile/%s"
 )
 
 // Client type
@@ -119,28 +107,16 @@ func (client *Client) do(ctx context.Context, req *http.Request) (*http.Response
 	req.Header.Set("Authorization", "Bearer "+client.channelToken)
 	req.Header.Set("User-Agent", "LINE-BotSDK-Go/"+version)
 	if ctx != nil {
-		res, err := client.httpClient.Do(req.WithContext(ctx))
-		if err != nil {
-			select {
-			case <-ctx.Done():
-				err = ctx.Err()
-			default:
-			}
-		}
-
-		return res, err
+		return ctxhttp.Do(ctx, client.httpClient, req)
 	}
 	return client.httpClient.Do(req)
 
 }
 
-func (client *Client) get(ctx context.Context, endpoint string, query url.Values) (*http.Response, error) {
+func (client *Client) get(ctx context.Context, endpoint string) (*http.Response, error) {
 	req, err := http.NewRequest("GET", client.url(endpoint), nil)
 	if err != nil {
 		return nil, err
-	}
-	if query != nil {
-		req.URL.RawQuery = query.Encode()
 	}
 	return client.do(ctx, req)
 }
@@ -151,13 +127,5 @@ func (client *Client) post(ctx context.Context, endpoint string, body io.Reader)
 		return nil, err
 	}
 	req.Header.Set("Content-Type", "application/json; charset=UTF-8")
-	return client.do(ctx, req)
-}
-
-func (client *Client) delete(ctx context.Context, endpoint string) (*http.Response, error) {
-	req, err := http.NewRequest("DELETE", client.url(endpoint), nil)
-	if err != nil {
-		return nil, err
-	}
 	return client.do(ctx, req)
 }

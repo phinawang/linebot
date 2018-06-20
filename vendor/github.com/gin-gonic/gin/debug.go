@@ -42,7 +42,7 @@ func debugPrintLoadTemplate(tmpl *template.Template) {
 
 func debugPrint(format string, values ...interface{}) {
 	if IsDebugging() {
-		log.Printf("[API-debug] "+format, values...)
+		log.Printf("[GIN-debug] "+format, values...)
 	}
 }
 

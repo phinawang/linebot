@@ -44,7 +44,7 @@ type ImagemapArea struct {
 // ImagemapAction type
 type ImagemapAction interface {
 	json.Marshaler
-	ImagemapAction()
+	imagemapAction()
 }
 
 // URIImagemapAction type
@@ -86,8 +86,8 @@ func (a *MessageImagemapAction) MarshalJSON() ([]byte, error) {
 }
 
 // implements ImagemapAction interface
-func (a *URIImagemapAction) ImagemapAction()     {}
-func (a *MessageImagemapAction) ImagemapAction() {}
+func (a *URIImagemapAction) imagemapAction()     {}
+func (a *MessageImagemapAction) imagemapAction() {}
 
 // NewURIImagemapAction function
 func NewURIImagemapAction(linkURL string, area ImagemapArea) *URIImagemapAction {

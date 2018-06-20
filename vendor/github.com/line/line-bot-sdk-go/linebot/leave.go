@@ -15,8 +15,9 @@
 package linebot
 
 import (
-	"context"
 	"fmt"
+
+	"golang.org/x/net/context"
 )
 
 // LeaveGroup method
