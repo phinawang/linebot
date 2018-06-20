@@ -28,13 +28,9 @@ func (v *defaultValidator) ValidateStruct(obj interface{}) error {
 	return nil
 }
 
-// Engine returns the underlying validator engine which powers the default
-// Validator instance. This is useful if you want to register custom validations
-// or struct level validations. See validator GoDoc for more info -
-// https://godoc.org/gopkg.in/go-playground/validator.v8
-func (v *defaultValidator) Engine() interface{} {
+func (v *defaultValidator) RegisterValidation(key string, fn validator.Func) error {
 	v.lazyinit()
-	return v.validate
+	return v.validate.RegisterValidation(key, fn)
 }
 
 func (v *defaultValidator) lazyinit() {

@@ -5,16 +5,11 @@
 package binding
 
 import (
-	"bytes"
-	"io"
 	"net/http"
 
 	"github.com/gin-gonic/gin/json"
 )
 
-// EnableDecoderUseNumber is used to call the UseNumber method on the JSON
-// Decoder instance. UseNumber causes the Decoder to unmarshal a number into an
-// interface{} as a Number instead of as a float64.
 var EnableDecoderUseNumber = false
 
 type jsonBinding struct{}
@@ -24,15 +19,7 @@ func (jsonBinding) Name() string {
 }
 
 func (jsonBinding) Bind(req *http.Request, obj interface{}) error {
-	return decodeJSON(req.Body, obj)
-}
-
-func (jsonBinding) BindBody(body []byte, obj interface{}) error {
-	return decodeJSON(bytes.NewReader(body), obj)
-}
-
-func decodeJSON(r io.Reader, obj interface{}) error {
-	decoder := json.NewDecoder(r)
+	decoder := json.NewDecoder(req.Body)
 	if EnableDecoderUseNumber {
 		decoder.UseNumber()
 	}

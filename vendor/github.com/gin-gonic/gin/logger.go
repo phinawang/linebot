@@ -103,8 +103,8 @@ func LoggerWithWriter(out io.Writer, notlogged ...string) HandlerFunc {
 				path = path + "?" + raw
 			}
 
-			fmt.Fprintf(out, "[GIN] %v |%s %3d %s| %13v | %15s |%s %-7s %s %s\n%s",
-				end.Format("2006/01/02 - 15:04:05"),
+			fmt.Fprintf(out, "%v API Client |%s %3d %s| %13v | %5s |%s %-7s %s %s\n%s",
+				end.Format("2006/01/02 15:04:05"),
 				statusColor, statusCode, resetColor,
 				latency,
 				clientIP,

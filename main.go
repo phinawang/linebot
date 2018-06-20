@@ -40,7 +40,6 @@ func main() {
                 switch message := event.Message.(type) {
                     case *linebot.TextMessage:
 
-                case *linebot.TextMessage:
                     reply_msg := fmt.Sprintf("Your Token: %s\nyou type: %s\nmessage id: %s\nuser_id:%s\ngroup_id:%s\nroom_id:%s", event.ReplyToken, message.Text, message.ID, event.Source.UserID, event.Source.GroupID, event.Source.RoomID)
                     if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
                         log.Print(err)
@@ -55,7 +54,7 @@ func main() {
         n, _ := c.Request.Body.Read(buf) 
         body := string(buf[0:n])
 
-        if _, err := bot.PushMessage("Udd05c331c930a303fd997c1b509af8ea", linebot.NewTextMessage(body)).Do(); err != nil {
+        if _, err := bot.PushMessage("R6dcb63709978fed802b24764686c3ea8", linebot.NewTextMessage(body)).Do(); err != nil {
             log.Print(err)
         }
     })
