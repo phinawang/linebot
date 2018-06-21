@@ -1,6 +1,6 @@
 {
-	"ImportPath": "github.com/allanhung/linebot",
-	"GoVersion": "go1.7",
+	"ImportPath": "github.com/phinawang/linebot",
+	"GoVersion": "go1.9",
 	"GodepVersion": "v74",
 	"Packages": [
 		"./..."
