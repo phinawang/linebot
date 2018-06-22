@@ -48,12 +48,6 @@
 			"revision": ""
 		},
 		{
-			"checksumSHA1": "A8XSo2YRxB/QXXWGX1pFK2mtTfc=",
-			"path": "github.com/phinawang/linebot",
-			"revision": "c4e940408946b038ffbecb7011eabb9564815092",
-			"revisionTime": "2018-06-22T06:31:22Z"
-		},
-		{
 			"checksumSHA1": "yKvNE38xsSCyt2v0RKn7YzjYXss=",
 			"path": "github.com/ugorji/go/codec",
 			"revision": ""
