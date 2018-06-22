@@ -1,0 +1,74 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "QeKwBtN2df+j+4stw3bQJ6yO4EY=",
+			"path": "github.com/gin-contrib/sse",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "E9gvfQCApKdYhOQLEkfAx60MkI4=",
+			"path": "github.com/gin-gonic/gin",
+			"revision": "bf85b32c1d11dcfa2202daa6d1ad2addae2d1619",
+			"revisionTime": "2018-06-21T01:53:52Z"
+		},
+		{
+			"checksumSHA1": "O2rrqYI7QQjJYVx8+E8DC8rlIh0=",
+			"path": "github.com/gin-gonic/gin/binding",
+			"revision": "bf85b32c1d11dcfa2202daa6d1ad2addae2d1619",
+			"revisionTime": "2018-06-21T01:53:52Z"
+		},
+		{
+			"checksumSHA1": "woO1qIxIeQ1bcbPSiMfAKk3r4xg=",
+			"path": "github.com/gin-gonic/gin/json",
+			"revision": "bf85b32c1d11dcfa2202daa6d1ad2addae2d1619",
+			"revisionTime": "2018-06-21T01:53:52Z"
+		},
+		{
+			"checksumSHA1": "DGs8sdsCkNHsU9+fQMM9XHb+ZCE=",
+			"path": "github.com/gin-gonic/gin/render",
+			"revision": "bf85b32c1d11dcfa2202daa6d1ad2addae2d1619",
+			"revisionTime": "2018-06-21T01:53:52Z"
+		},
+		{
+			"checksumSHA1": "yqF125xVSkmfLpIVGrLlfE05IUk=",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "UhBY1soyBaaF20tteZyqqBUOMwY=",
+			"path": "github.com/line/line-bot-sdk-go/linebot",
+			"revision": "12795b5eb20d5ef6df2e07a48c7b252bebe2191d",
+			"revisionTime": "2018-06-19T06:51:19Z"
+		},
+		{
+			"checksumSHA1": "w5RcOnfv5YDr3j2bd1YydkPiZx4=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "A8XSo2YRxB/QXXWGX1pFK2mtTfc=",
+			"path": "github.com/phinawang/linebot",
+			"revision": "c4e940408946b038ffbecb7011eabb9564815092",
+			"revisionTime": "2018-06-22T06:31:22Z"
+		},
+		{
+			"checksumSHA1": "yKvNE38xsSCyt2v0RKn7YzjYXss=",
+			"path": "github.com/ugorji/go/codec",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "P/k5ZGf0lEBgpKgkwy++F7K1PSg=",
+			"path": "gopkg.in/go-playground/validator.v8",
+			"revision": "5f1438d3fca68893a817e4a66806cea46a9e4ebf",
+			"revisionTime": "2017-07-30T05:02:35Z"
+		},
+		{
+			"checksumSHA1": "fRgp9UZPllOlkPssv7frzQx4z9A=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": ""
+		}
+	],
+	"rootPath": "github.com/phinawang/linebot"
+}
