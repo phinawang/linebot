@@ -53,6 +53,12 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "0pTcHZ43GApI5Lp33cN9RoWzdNk=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "ab9e364efd8b52800ff7ee48a9ffba4e0ed78dfb",
+			"revisionTime": "2017-08-29T14:47:16Z"
+		},
+		{
 			"checksumSHA1": "P/k5ZGf0lEBgpKgkwy++F7K1PSg=",
 			"path": "gopkg.in/go-playground/validator.v8",
 			"revision": "5f1438d3fca68893a817e4a66806cea46a9e4ebf",
