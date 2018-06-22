@@ -4,7 +4,6 @@ import (
     "log"
     "os"
     "fmt"
-    "io/ioutil"
     "github.com/gin-gonic/gin"
     "github.com/line/line-bot-sdk-go/linebot"
 )
