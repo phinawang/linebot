@@ -49,12 +49,6 @@
 			"revisionTime": "2018-06-19T06:51:19Z"
 		},
 		{
-			"checksumSHA1": "0pTcHZ43GApI5Lp33cN9RoWzdNk=",
-			"path": "golang.org/x/sys/unix",
-			"revision": "ab9e364efd8b52800ff7ee48a9ffba4e0ed78dfb",
-			"revisionTime": "2017-08-29T14:47:16Z"
-		},
-		{
 			"checksumSHA1": "w5RcOnfv5YDr3j2bd1YydkPiZx4=",
 			"path": "github.com/mattn/go-isatty",
 			"revision": ""
@@ -63,6 +57,12 @@
 			"checksumSHA1": "yKvNE38xsSCyt2v0RKn7YzjYXss=",
 			"path": "github.com/ugorji/go/codec",
 			"revision": ""
+		},
+		{
+			"checksumSHA1": "0pTcHZ43GApI5Lp33cN9RoWzdNk=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "ab9e364efd8b52800ff7ee48a9ffba4e0ed78dfb",
+			"revisionTime": "2017-08-29T14:47:16Z"
 		},
 		{
 			"checksumSHA1": "P/k5ZGf0lEBgpKgkwy++F7K1PSg=",
