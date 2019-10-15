@@ -39,16 +39,19 @@ func main() {
 		switch message := event.Message.(type) {
 	            case *linebot.TextMessage:
 
-                    reply_msg := fmt.Sprintf("Your Token: %s\nyou type: %s\nmessage id: %s\nuser_id:%s\ngroup_id:%s\nroom_id:%s", event.ReplyToken, message.Text, message.ID, event.Source.UserID, event.Source.GroupID, event.Source.RoomID)
-                    if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
-                    log.Print(err)
-                    }
+                    // reply_msg := fmt.Sprintf("Your Token: %s\nyou type: %s\nmessage id: %s\nuser_id:%s\ngroup_id:%s\nroom_id:%s", event.ReplyToken, message.Text, message.ID, event.Source.UserID, event.Source.GroupID, event.Source.RoomID)
+                    // if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
+                    // log.Print(err)
+                    // }
                     if message.Text == "珍珍"{
-			reply_msg := fmt.Sprintf("是大美女")
-                    	if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
-                    		log.Print(err)
-                    	}
-		    }
+			        reply_msg := fmt.Sprintf("是大美女")
+                    	
+                    }else{
+                        reply_msg := fmt.Sprintf("你是誰")
+                    }
+                    if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
+                        log.Print(err)
+                    }
                 }
             }
         }
