@@ -50,7 +50,7 @@ func main() {
                         reply_msg = fmt.Sprintf("是大美女")
                         case "娜娜":
                         reply_msg = fmt.Sprintf("是大便")
-                        case "不想上班" || "我不想上班" || "好累":
+                        case "不想上班","我不想上班","好累":
                         reply_msg = fmt.Sprintf("好，不要上班，回家好嗎")
                         case "好":
                         reply_msg = fmt.Sprintf("乖")
@@ -58,9 +58,9 @@ func main() {
                         reply_msg = fmt.Sprintf("不要走")
                         case "你好嗎":
                         reply_msg = fmt.Sprintf("我還好")
-                        case "你走了嗎" || "你回家了嗎":
+                        case "你走了嗎","你回家了嗎":
                         reply_msg = fmt.Sprintf("還沒我要工作到死")
-                        case "要吃什麼" || "晚上要吃什麼":
+                        case "要吃什麼","晚上要吃什麼":
                         reply_msg = fmt.Sprintf("大便")
                         case "快回家":
                         reply_msg = fmt.Sprintf("不要")
