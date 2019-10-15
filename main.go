@@ -43,12 +43,12 @@ func main() {
                     // if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
                     // log.Print(err)
                     // }
-                    _reply_msg
+                    reply_msg := ""
                     if message.Text == "珍珍"{
-			            reply_msg := fmt.Sprintf("是大美女")
+			            reply_msg = fmt.Sprintf("是大美女")
                     	
                     }else{
-                        reply_msg := fmt.Sprintf("你是誰")
+                        reply_msg = fmt.Sprintf("你是誰")
                     }
                     if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
                         log.Print(err)
