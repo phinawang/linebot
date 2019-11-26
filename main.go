@@ -65,7 +65,12 @@ func main() {
                         case "快回家":
                         reply_msg = fmt.Sprintf("不要")
                         default:
-                        reply_msg = fmt.Sprintf("再見")
+                        //reply_msg = fmt.Sprintf("再見")
+                        reply_msg = fmt.Sprintf("{
+          \"speech\": \"test json\",
+          \"displayText\": \"test json\",
+          \"source\": \"game schedule\"
+      }")
                     }
                     if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(reply_msg)).Do(); err != nil {
                         log.Print(err)
